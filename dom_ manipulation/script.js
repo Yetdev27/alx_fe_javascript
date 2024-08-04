@@ -1,8 +1,8 @@
-// script.js
+
 const quotes = [
     { text: "The only way to do great work is to love what you do.", category: "Motivation" },
     { text: "Innovation distinguishes between a leader and a follower.", category: "Technology" },
-    // Add more quotes here
+  
 ];
 
 function showRandomQuote() {
@@ -25,12 +25,9 @@ function addQuote() {
     }
 }
 
-// Initial display
+
 showRandomQuote();
 
-// script.js
-
-// Load quotes from local storage (if available)
 const storedQuotes = JSON.parse(localStorage.getItem('quotes')) || [];
 const quotes = [...storedQuotes];
 
@@ -38,14 +35,11 @@ function saveQuotes() {
     localStorage.setItem('quotes', JSON.stringify(quotes));
 }
 
-// ... (existing code)
-
 function addQuote() {
-    // ... (existing code)
-    saveQuotes(); // Save quotes to local storage
-}
+    
+    saveQuotes(); 
 
-// Add this function to your script.js
+
 
 function exportToJSON() {
     const jsonBlob = new Blob([JSON.stringify(quotes)], { type: 'application/json' });
@@ -57,7 +51,6 @@ function exportToJSON() {
     URL.revokeObjectURL(url);
 }
 
-// Add this function to your script.js
 
 function importFromJsonFile(event) {
     const fileReader = new FileReader();
@@ -74,9 +67,6 @@ function importFromJsonFile(event) {
     fileReader.readAsText(event.target.files[0]);
 }
 
-// script.js
-
-// ... (existing code)
 
 function populateCategories() {
     const categoryFilter = document.getElementById("categoryFilter");
@@ -97,12 +87,9 @@ function filterQuotes() {
         ? quotes
         : quotes.filter(quote => quote.category === selectedCategory);
     
-    // Display filtered quotes
-    // (You'll need to update your existing display logic here)
+   
 }
-// script.js
 
-// ... (existing code)
 
 function saveLastSelectedCategory(selectedCategory) {
     localStorage.setItem("lastSelectedCategory", selectedCategory);
@@ -113,19 +100,14 @@ function loadLastSelectedCategory() {
     document.getElementById("categoryFilter").value = lastSelectedCategory || "all";
 }
 
-// Call this function during initialization
+
 loadLastSelectedCategory();
 
-
-// Simulate periodic data fetching and updating local storage
 function syncWithServer() {
     fetch('https://jsonplaceholder.typicode.com/posts')
         .then(response => response.json())
         .then(quotesFromServer => {
-            // Merge quotesFromServer with your existing local quotes
-            // Implement conflict resolution (e.g., server data takes precedence)
-            // Update local storage
-            // Notify users if data was updated
+            
         });
 }
 
