@@ -8,6 +8,40 @@ let quotes = JSON.parse(localStorage.getItem('quotes')) || [
     { text: "A room without books is like a body without a soul.", category: "Category 1" },
     { text: "In three words I can sum up everything I've learned about life: it goes on.", category: "Category 2" },
 ];
+// Function to create the form for adding new quotes
+function createAddQuoteForm() {
+  // Create a container for the form
+  const formContainer = document.createElement('div');
+  
+  // Create input for the new quote text
+  const quoteInput = document.createElement('input');
+  quoteInput.id = 'newQuoteText';
+  quoteInput.type = 'text';
+  quoteInput.placeholder = 'Enter a new quote';
+  
+  // Create input for the new quote category
+  const categoryInput = document.createElement('input');
+  categoryInput.id = 'newQuoteCategory';
+  categoryInput.type = 'text';
+  categoryInput.placeholder = 'Enter quote category';
+  
+  // Create a button to add the new quote
+  const addButton = document.createElement('button');
+  addButton.textContent = 'Add Quote';
+  addButton.onclick = addQuote;
+  
+  // Append the inputs and button to the form container
+  formContainer.appendChild(quoteInput);
+  formContainer.appendChild(categoryInput);
+  formContainer.appendChild(addButton);
+  
+  // Append the form container to the body of the document
+  document.body.appendChild(formContainer);
+}
+
+// Call the function to create the form when the page loads
+createAddQuoteForm();
+
 
 // Function to display a random quote
 function showRandomQuote() {
